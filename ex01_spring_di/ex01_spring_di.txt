@@ -1,0 +1,90 @@
+ex01_spring_di  -- Spring Legacy Project / Simple Java (또는 Java Project)
+
+src
+  sample1
+  	 HelloSpring.java
+     MessageBean.java 
+  sample2
+     HelloSpring.java
+     MessageBean.java   --interface
+     MessageBeanEn.java
+     MessageBeanKr.java 
+  sample3
+     HelloSpring.java        
+     MessageBean.java 
+     MessageBeanEn.java
+     MessageBeanKr.java
+     bean.xml --> new-> other->spring->spring bean configuration file -> beans(체크)
+         (pom.xml: 필요한 라이브러리를 추가, https://mvnrepository.com)
+                 프로젝트(오른쪽버튼) -->  Configure --> Convert to Maven Project  
+  sample4
+     HelloSpring.java
+     MessageBean.java   --interface
+     MessageBeanImpl.java
+     bean1.xml   ---> new-> other-> spring -> spring bean configuration file -> beans(체크)
+     bean2.xml   ---> beans, c, p 체크  
+  sample5
+     Bar.java
+     Foo.java    
+     FooTestApp.java   --main
+     InterFoo.java     --interface
+     bean1.xml         --beans(체크)
+     bean2.xml         --beans, c, p(체크)  
+     
+  sample6	    
+    bean1.xml           --Spring bean configuration File에서 beans 체크
+     	  bean이름 : developer
+          bean이름 : engineer
+    bean2.xml           --Spring bean configuration File에서 beans, c, p 체크   
+          bean이름 : developer
+          bean이름 : engineer
+    Emp.java                
+           -name:String    
+           -salary:int
+           +Emp(),    +Emp(name:String, salary:int)
+           +toString():String      -- 이름과 급여를 리턴
+    Engineer.java     <--- Emp상속(is-a 관계)
+           -dept:String
+           +Engineer(), +Engineer(name:String, salary:int)
+           +setDept(dept:String):void 
+           +toString():String    -- 이름과 급여(부모 toString())과 부서를 리턴 
+    Developer.java    <--- Emp상속  
+            -dept:String
+            +Developer(), +Developer(name:String, salary:int)
+            +setDept(dept:String):void
+            +toString():String 
+    EmpMain.java
+    
+    [출력]
+    이름 :강호동     급여 : 1500000원    부서 : 개발1팀(개발부)     
+    이름 :이순신     급여 : 2500000원    부서 : 기술1팀(기술부)        
+      
+  sample7  -- sample6을 복사해서 수정
+         bean1.xml           --Spring bean configuration File에서 beans 체크
+         bean2.xml           --Spring bean configuration File에서 beans, c, p 체크   
+         Emp.java                
+               -name:String    
+               -salary:int
+               +Emp(),    +Emp(name:String, salary:int)
+               +toString():String      -- 이름과 급여를 리턴
+         Engineer.java  (has-a 관계)
+               -emp:Emp     
+               -dept:String
+               +Engineer(), +Engineer(emp:Emp, dept:String)
+               +toString():String    -- 이름과 급여, 부서를 리턴 
+         Developer.java    
+                -emp:Emp  
+                -dept:String
+                +Developer(), +Developer(emp:Emp, dept:String)
+                +toString():String   -- 이름과 급여, 부서를 리턴 
+         EmpMain.java
+         
+    [출력]
+    이름 :강호동     급여 : 1500000원    부서 : 개발1팀(개발부)     
+    이름 :이순신     급여 : 2500000원    부서 : 기술1팀(기술부)     
+
+
+
+
+
+

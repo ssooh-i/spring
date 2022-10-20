@@ -1,0 +1,28 @@
+ex06_spring_webmvc    --- Spring Legacy Project --> Spring MVC Project
+                                                패키지명: com.ssafy.springmvc
+                                                
+     src/main/java
+         com.ssafy.springmvc
+              HomeController.java
+         com.ssafy.springmvc.model
+              HelloDto.java
+              ParamterDto.java         
+         com.ssafy.springmvc.model.dao
+              HelloDao.java
+              HelloDaoImpl.java
+         com.ssafy.springmvc.model.service
+              HelloService.java
+              HelloServiceImpl.java
+     WEB-INF/views
+         index.jsp
+         step01
+             hello.jsp
+         step02
+             hello.jsp
+         step03
+             form.jsp
+             result.jsp
+                       
+                   
+            
+   

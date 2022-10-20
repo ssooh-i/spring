@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/spring/root-context.xml</param-value>
+	</context-param>
+	
+	<!-- Creates the Spring Container shared by all Servlets and Filters -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<!-- POST방식 한글처리 -->
+	<filter>
+	    <filter-name>encodingFilter</filter-name>
+	    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+	    <init-param>
+	      <param-name>encoding</param-name>
+	      <param-value>UTF-8</param-value>
+	    </init-param>
+	 </filter>
+	 
+	 <filter-mapping>
+	    <filter-name>encodingFilter</filter-name>
+	    <url-pattern>/*</url-pattern>
+	 </filter-mapping>
+	 
+	 
+	<!-- Processes application requests -->
+	<servlet>
+		<servlet-name>appServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+		
+	<servlet-mapping>
+		<servlet-name>appServlet</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+</web-app>
+
+ <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+</web-app>
+<!-- 
+
+<load-on-startup>1</load-on-startup>
+web.xml에서 servlet을 초기화 하기위한 설정
+음수 - 처음으로 해당 서블릿에 요청이 왔을때(해당 서블릿에 처음으로 접근할때)
+0 or 양수 - context가 초기화 될때
+
+설정파일은 "웹과 비지니스계층으로 분리"가 된다.
+이를 위하여 <listener>태그를 정의한다.
+설정파일을 복수로 사용할 때는 설정파일을 읽는 순서가 중요한데 읽는 순서가 틀리면 오류가 발생한다.
+사용하는 설정파일은 mvc-servlet.xml과 applicationContext.xml 2가지인데
+mvc-servlet.xml에서 applicationContext.xml에 정의된 bean을 사용하기 때문에
+applicationContext.xml, mvc-servlet.xml순서로 설정파일을 읽는다.
+
+<ContextLoaderListener>
+ContextLoaderListener클래스는 기본으로 applicationContext.xml을 읽지만 그 이름은 변경도
+가능하다. ContextLoaderListener는 javax.servlet.ServletContext인터페이스를 구현하는
+클래스이기 때문에 ServletContext인스턴스 생성시(즉, Tomcat이 애플리케이션을 로딩할 때) 호출되는 
+것으로  DispatcherServlet클래스가 읽기전 ContextLoaderListener클래스가 비지니스로직 계층용
+설정파일인 "applicationContext.xml"을 읽는다.
+
+ContextLoaderListener클래스는 스프링의 root WebApplicationContext를 시작시키기 위한 
+Bootstrap listener이다. 
+이것을 정의하면 서버가 시작되면서 자동으로 스프링의 ContextLoaderLister클래스가 초기화된다.
+기본적으로 설정파일이 "/WEB-INF/applicationContext.xml"로 되어 있다. 
+설정 값이 따로 없으면 기본설정 파일을 찾아서 로딩한다.
+이것을 변경하기 위해서는 context-param 을  web.xml에 추가해 주면 된다.
+param-name은 "contextConfiguration"이다. Spring Framework로 웹 애플리케이션을 개발할 경우
+web.xml에 설정된 정보를 활용 WebApplicationContext에 의해서 관리되며 웹 애플리케이션과
+생명주기를 같이하는 ServletContext에 저장되어 관리한다.
+ -->

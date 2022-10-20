@@ -1,0 +1,19 @@
+ex04_spring_junit  -- Spring Legacy Project, Spring MVC Project
+                                         패키지명: com.ssafy.main
+ 
+ 라이브 강의(spring_di_configxml 소스 복사)
+ src/main/java
+    com.ssafy.main
+       GuestBookMain.java 
+    com.ssafy.model
+    com.ssafy.model.dao
+    com.ssafy.model.service
+    com.ssafy.util
+ src/main/resource
+    applicationContext.xml 
+ src/test/java
+    GuestBookTest.java
+    Log4JTest.java
+ src/test/resource
+    table.sql    
+      

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- 타겟대상 -->
+<bean id="targetBean"  class="aop07.MessageBeanImpl">
+	<property name="name"  value="민들래"/>
+</bean>
+
+<!-- Advice -->
+<bean id="loggingAdvice"  class="aop07.LoggingAdvice"/>
+
+<!-- Advisor = PointCut + Advice -->
+<!-- 1. pointcut에 특정 시점을 정의
+     2. 1번에 정의된 시점에 advice실행 -->
+<bean id="advisor" class="org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor">
+	<property name="advice"  ref="loggingAdvice"/>
+	
+	<property name="pointcut">
+		<bean class="org.springframework.aop.support.JdkRegexpMethodPointcut">
+			<property name="pattern">
+				<value>.*sayHello.*</value>   <!-- targetBean에 sayHello메서드를 찾음 -->
+			</property>
+		</bean>	
+	</property>
+</bean>     
+
+<!-- 타겟대상에 advisor를 적용 -->
+<bean id="proxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+	<property name="target" ref="targetBean"/>
+	<property name="interceptorNames">
+		<list>
+			<value>advisor</value>
+		</list>
+	</property>
+</bean>
+
+</beans>
+
+
+
+
+
+
+

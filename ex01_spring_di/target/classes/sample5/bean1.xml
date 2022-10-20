@@ -3,7 +3,8 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-<bean id="f0" class="sample5.Foo" scope="prototype"/>
+<bean id="f0" class="sample5.Foo" scope="prototype"/> <!-- 주소가 달라짐 -->
+<!-- <bean id="f0" class="sample5.Foo" scope="singleton"/>--> <!-- 주소 같은 been 씀 -->
 
 <bean id="f1" class="sample5.Foo">
 	<constructor-arg value="test"/>

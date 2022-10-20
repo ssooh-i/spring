@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<bean id="boardService" class="com.ssafy.board.model.service.BoardServiceImpl" p:boardDao-ref="boardDao"/>
+    
+    <bean id="boardDao" class="com.ssafy.board.model.dao.BoardDaoImpl" c:dataSource-ref="ds" c:dbUtil-ref="dbUtil"/>
+    
+    <bean id="dbUtil" class="com.ssafy.util.DBUtil"></bean>
+    
+    <bean id="ds" class="org.springframework.jdbc.datasource.SimpleDriverDataSource"
+    p:driverClass="com.mysql.cj.jdbc.Driver"
+    p:url="jdbc:mysql://127.0.0.1:3306/ssafyweb?serverTimezone=UTC&amp;useUniCode=yes&amp;characterEncoding=UTF-8"
+    p:username="ssafy"
+    p:password="1234"
+    />
+
+</beans>

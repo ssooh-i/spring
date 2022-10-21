@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace는 dao명, id는 메서드명 -->
+<mapper namespace="com.ssafy.emp.model.dao.EmpDao"> 
+	<insert id="insertEmp" parameterType="emp">
+		<![CDATA[
+			insert into emp(ename, phone, dept)
+			values(#{ename},#{phone},#{dept})
+		]]> 
+	</insert>
+
+	<select id="listEmp" resultType="emp">
+		<![CDATA[
+		 	select * from emp
+		]]> 	
+	</select>
+	
+	<update id="updateEmp" parameterType="emp">
+		<![CDATA[
+			update emp
+			set phone=#{phone}, dept=#{dept}
+			where eno=#{eno}
+		]]>
+	</update>
+
+	<delete id="deleteEmp" parameterType="java.lang.Integer">
+		<![CDATA[
+			delete 
+			from emp
+			where eno=#{eno}
+		]]>
+	</delete>
+	
+	<select id="getEmpByEnoAndDept" parameterType="hashMap"  resultType="emp">
+		<![CDATA[
+			select * 
+			from emp 
+			where eno <= #{eno} and dept like #{dept}  
+		]]>
+	</select> <!--  <= 또는   &lt; 로 작성가능   -->
+	
+	<select id="searchNo" parameterType="java.lang.Integer"  resultType="emp">
+		<![CDATA[
+			select *
+			from emp
+			where eno = #{eno}	
+		]]>
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+

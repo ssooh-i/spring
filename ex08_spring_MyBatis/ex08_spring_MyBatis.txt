@@ -1,0 +1,84 @@
+ex07_spring_MyBatis  -- Spring Legacy Project  --> Spring MVC Project
+                                                    패키지명: com.ssafy.emp
+--------------------------------------------------------------------------
+① pom.xml에 수정 및 추가
+    <java-version>1.8</java-version>
+    <org.springframework-version>5.3.18</org.springframework-version>
+		
+	<!-- mysql-connector -->
+	<dependency>
+		<groupId>mysql</groupId>
+		<artifactId>mysql-connector-java</artifactId>
+		<version>8.0.23</version>
+	</dependency>
+	
+	<!-- mybatis 라이브러리 -->
+	<dependency>
+		<groupId>org.mybatis</groupId>
+		<artifactId>mybatis</artifactId>
+		<version>3.5.3</version>
+	</dependency>
+	
+	<!-- jstl 라이브러리 -->
+	<dependency>
+	    <groupId>javax.servlet</groupId>
+	    <artifactId>jstl</artifactId>
+	    <version>1.2</version>
+	</dependency>		
+		
+② web.xml -- 한글처리
+========================================================================
+src/main/java
+    com.ssafy.emp.controller
+        MainController.java
+    com.ssafy.emp.model
+    	Emp.java
+    com.ssafy.emp.model.service
+        EmpService.java
+    com.ssafy.emp.model.dao
+        EmpDao.java  
+    com.ssafy.emp.util
+        SqlMapConfig.java
+        
+src/main/resource
+     config.property         ---file  ==> url/user/password
+     myBatis-config.xml      ---xml   ==> DB연결
+     sqlMapper.xml           ---xml   ==> CRUD작성 
+     
+src
+  main
+     webapp
+        resource
+        table_schema
+            table.sql
+        WEB-INF
+            classes
+            spring
+                appServlet
+                    servlet-context.xml  -- 수정 (controller 빈 생성)
+                root-context.xml         -- 수정  (service, dao 빈 생성)       
+            views
+               index.jsp
+               list.jsp
+               searchNo.jsp
+               updateEmp.jsp
+            web.xml   
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     

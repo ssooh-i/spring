@@ -1,0 +1,121 @@
+ex08_spring_MyBatis  -- Spring Legacy Project  --> Spring MVC Project
+                                                    패키지명: com.ssafy.emp
+--------------------------------------------------------------------------
+① pom.xml에 수정 및 추가
+    <properties>
+		<java-version>1.8</java-version>
+		<org.springframework-version>5.3.9</org.springframework-version>
+		<mysql-connector-java-version>8.0.24</mysql-connector-java-version>
+		<mybatis-version>3.5.6</mybatis-version>
+		<mybatis-spring-version>2.0.6</mybatis-spring-version>
+		<commons-dbcp-version>1.4</commons-dbcp-version>
+		<json-version>20210307</json-version>
+		<org.aspectj-version>1.6.10</org.aspectj-version>
+		<org.slf4j-version>1.6.6</org.slf4j-version>
+	</properties>
+		
+	<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+	<dependency>
+		<groupId>mysql</groupId>
+		<artifactId>mysql-connector-java</artifactId>
+		<version>${mysql-connector-java-version}</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+	<dependency>
+		<groupId>org.mybatis</groupId>
+		<artifactId>mybatis</artifactId>
+		<version>${mybatis-version}</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
+	<dependency>
+		<groupId>org.mybatis</groupId>
+		<artifactId>mybatis-spring</artifactId>
+		<version>${mybatis-spring-version}</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/commons-dbcp/commons-dbcp -->
+	<dependency>
+		<groupId>commons-dbcp</groupId>
+		<artifactId>commons-dbcp</artifactId>
+		<version>${commons-dbcp-version}</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/org.springframework/spring-tx -->
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-tx</artifactId>
+		<version>${org.springframework-version}</version>
+	</dependency>
+
+	<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-jdbc</artifactId>
+		<version>${org.springframework-version}</version>
+	</dependency>
+	     
+	<!-- https://mvnrepository.com/artifact/org.json/json -->
+	<dependency>
+	    <groupId>org.json</groupId>
+	    <artifactId>json</artifactId>
+	    <version>${json-version}</version>
+	</dependency>	
+		
+② web.xml -- 한글처리
+========================================================================
+src/main/java
+    com.ssafy.emp.controller
+        MainController.java
+    com.ssafy.emp.model
+    	Emp.java
+    com.ssafy.emp.model.service
+        EmpService.java
+    com.ssafy.emp.model.dao
+        EmpDao.java      -- interface(수정)
+    com.ssafy.emp.util(삭제)
+        SqlMapConfig.java(삭제)
+        
+src/main/resource
+     config.property         ---file  ==> url/user/password
+     myBatis-config.xml      ---xml   ==> DB연결
+     sqlMapper.xml           ---xml   ==> CRUD작성 
+     
+src
+  main
+     webapp
+        resource
+        table_schema
+            table.sql
+        WEB-INF
+            classes
+            spring
+                appServlet
+                    servlet-context.xml  -- 수정 (controller 빈 생성)
+                root-context.xml         -- 수정  (service, dao 빈 생성)       
+            views
+               index.jsp
+               list.jsp
+               searchNo.jsp
+               updateEmp.jsp
+            web.xml   
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     

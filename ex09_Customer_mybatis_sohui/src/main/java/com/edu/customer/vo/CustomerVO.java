@@ -1,5 +1,7 @@
 package com.edu.customer.vo;
 
+import java.util.List;
+
 public class CustomerVO {
 	private String id;
 	private String password;

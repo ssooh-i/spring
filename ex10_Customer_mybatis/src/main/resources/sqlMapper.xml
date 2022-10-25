@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace는 dao명, id는 메서드명 -->
+<mapper namespace="com.edu.customer.model.dao.CustomerDao">  <!-- namespace:이름공간 -->
+	<insert id="insertCustomer" parameterType="customer">
+		<![CDATA[ 
+			insert into tb_customer(id, password, name) 
+			values(#{id},#{password},#{name})
+		]]>
+	</insert>
+	
+	<select id="listCustomer" resultType="customer">
+		<![CDATA[
+			select * from tb_customer
+		]]>
+	</select>
+	
+	<select id="searchCustomer" parameterType="java.lang.String" resultType="customer">
+		<![CDATA[
+			select * from tb_customer
+			where id = #{id}
+		]]>
+	</select>
+</mapper>
+
+
+
+

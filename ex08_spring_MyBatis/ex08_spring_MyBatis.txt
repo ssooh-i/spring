@@ -1,9 +1,9 @@
-ex07_spring_MyBatis  -- Spring Legacy Project  --> Spring MVC Project
-                                                    패키지명: com.ssafy.emp
---------------------------------------------------------------------------
+ex08_spring_MyBatis  -- Spring Legacy Project  --> Spring MVC Project
+                                                                                                     패키지명: com.ssafy.emp
+----------------------------------------------------------------------------------------
 ① pom.xml에 수정 및 추가
     <java-version>1.8</java-version>
-    <org.springframework-version>5.3.18</org.springframework-version>
+    <org.springframework-version>5.3.23</org.springframework-version>
 		
 	<!-- mysql-connector -->
 	<dependency>

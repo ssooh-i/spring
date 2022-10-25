@@ -1,7 +1,6 @@
 package com.ssafy.emp.model;
 
 //기본생성자, 인자4개받는 생성자, setter&getter
-//DTO
 public class Emp {
 	private int eno;
 	private String ename;
@@ -11,7 +10,6 @@ public class Emp {
 	public Emp() {
 		super();
 	}
-	
 	public Emp(int eno, String ename, String phone, String dept) {
 		super();
 		this.eno = eno;
@@ -19,7 +17,6 @@ public class Emp {
 		this.phone = phone;
 		this.dept = dept;
 	}
-
 	public int getEno() {
 		return eno;
 	}
@@ -44,11 +41,4 @@ public class Emp {
 	public void setDept(String dept) {
 		this.dept = dept;
 	}
-	@Override
-	public String toString() {
-		return "Emp [eno=" + eno + ", ename=" + ename + ", phone=" + phone + ", dept=" + dept + "]";
-	}
-	
-	
-	
 }

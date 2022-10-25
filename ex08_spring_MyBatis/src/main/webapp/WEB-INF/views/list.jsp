@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var = "root" value="${pageContext.request.contextPath }" />
+<c:set var="root" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,28 +19,27 @@
 		<td>삭제</td>
 	</tr>  
 	<tr>
-		<c:forEach items = "${list}" var="emp">
+	<c:forEach items="${list}" var="ob">
 	<tr>
-		<td>${emp.eno}</td>
-		<td>${emp.ename}</td>
-		<td>${emp.phone}</td>
-		<td>${emp.dept}</td>
+		<td>${ob.eno}</td> 
+		<td>${ob.ename}</td>
+		<td>${ob.phone}</td>
+		<td>${ob.dept}</td>
 		<td>
-			<form action="${root}/update" method="post">
-			    <input type="hidden" name="eno" value="${emp.eno}"/>
-			    <input type="hidden" name="ename" value="${emp.ename}"/>
-			    <input type="hidden" name="phone" value="${emp.phone}"/>
-			    <input type="hidden" name="dept" value="${emp.dept}"/>
-			   	<a href="javascript:;" onclick="parentNode.submit();">수정</a><!-- 버튼으로 안만들고 링크로 값 주기 -->
+			<form action="${root}/updateEmp" method="post">
+			    <input type="hidden" name="eno" value="${ob.eno}"/>
+			    <input type="hidden" name="ename" value="${ob.ename}"/>
+			    <input type="hidden" name="phone" value="${ob.phone}"/>
+			    <input type="hidden" name="dept" value="${ob.dept}"/>
+			   	<a href="javascript:;" onclick="parentNode.submit();">수정</a>
 			    <!-- <input type="submit" value="수정"/> -->
 			</form>
 		</td>
 		<td>
-			<a href="${root}/delete?eno=${emp.eno}">삭제</a>
+			<a href="${root}/deleteEmp?eno=${ob.eno}">삭제</a>
 		</td>
 	</tr> 
 	</c:forEach>
-
 </table>	
 </body>
 </html>

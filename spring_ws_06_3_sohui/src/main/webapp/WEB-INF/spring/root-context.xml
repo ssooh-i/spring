@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<context:component-scan	base-package="com.ssafy.ws.aop, com.ssafy.ws.model"/>
+
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName"  value="java:comp/env/jdbc/edu"/>
+	</bean>
+	
+	<!-- mybatis에서 제공하는 scan 태그를 통해 repository interface들의 위치를 지정한다. -->
+	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="typeAliasesPackage" value="com.ssafy.ws.dto"/>
+		<property name="mapperLocations" value="classpath:mappers/*.xml"/>
+		<property name="configLocation" value="classpath:myBatis-config.xml"/>
+	</bean>
+		
+	<!-- MyBatis를 사용하기 위한 sqlSessionFactory를 등록한다. -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactoryBean"/>
+	</bean>	
+	
+	<bean id="transactionManager" 
+	     class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource"  ref="dataSource"/>
+	</bean>
+	
+	<mybatis-spring:scan base-package="com.ssafy.ws.model.repo"/>
+	
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+
+	<!-- 자동으로 프록시를 생성하도록 설정한다. -->
+	<aop:aspectj-autoproxy/>
+</beans>
+<!-- 
+	namespaces : tx (추가)
+ -->

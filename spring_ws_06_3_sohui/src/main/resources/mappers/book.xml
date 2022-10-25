@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.ws.model.repo.BookRepo">
+	<!-- Book에서 전체 행을 리턴 -->
+	<select id="getList" resultType="Book">
+		<![CDATA[
+			select * from book
+		]]>
+	</select>
+	<insert id="insBook" parameterType="Book">
+		<![CDATA[
+			insert into book (isbn, title, author, price, content, img, orgImg)
+			values (#{isbn}, #{title}, #{author}, #{price}, #{content}, #{img}, #{orgImg})
+		]]>
+	</insert>
+
+</mapper>	
+<!-- 뭐시기 : dto, vo, entity 이름
+SELECT : sel뭐시기
+SELECT 여러개면 : sel뭐시기List
+INSERT : ins뭐시기
+DELETE : del뭐시기
+UPDATE : upd뭐시기
+
+ -->

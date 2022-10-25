@@ -32,6 +32,7 @@
 	<!-- /regist 요청에 대해 sessionInterceptor를 등록한다. -->
 	<interceptors>
 		<interceptor>
+		
 			<mapping path="/regist" />
 			<beans:ref bean="sessionInterceptor" />
 		</interceptor>

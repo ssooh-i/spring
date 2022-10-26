@@ -1,0 +1,32 @@
+ex11_Customer_mybatis_rest  -- Spring Legacy Project
+                                                         패키지명: com.edu.customer
+ src/main/src
+   com.edu.customer
+      CustomerController.java
+      MainController.java
+   com.edu.customer.dao
+      CustomerDao.java
+      CustomerService.java
+   com.edu.customer.vo
+      CustomerVO.java
+src/main/resource      
+      mybatis-config.xml
+      user-mapping.xml
+      
+webapp
+   META-INF
+      context.xml
+   resource
+      customer.sql  
+   WEB-INF
+       view
+          customer
+             insert.jsp
+             list.jsp
+             search.jsp
+          include
+             header.jsp
+          index.jsp          
+      
+     
+                                   

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace는 dao명, id는 메서드명 -->
+<mapper namespace="com.edu.customer.dao.CustomerDao"> 	
+	<insert id="customerInsert" parameterType="custom">
+	<![CDATA[
+		insert into tb_customer(id,password,name) values(#{id}, #{password}, #{name})
+	]]>
+	</insert>	
+	
+	<select id="customerList" resultType="custom">
+	<![CDATA[
+		select * from tb_customer
+	]]>
+	</select>	
+	
+	<select id="customerSearch" parameterType="string" resultType="custom">
+	<![CDATA[
+		select * from tb_customer where id=#{id}
+	]]>
+	</select>
+	
+	<select id="idCheck" parameterType="string" resultType="int">
+	<![CDATA[
+		select count(id) from tb_customer where id = #{checkid}
+	]]>
+	</select>
+	
+	<delete id="customerDelete" parameterType="string">
+	<![CDATA[
+		delete from tb_customer where id = #{uid}
+	]]>
+	</delete>
+	
+	<update id="customerUpdate" parameterType="custom">
+	<![CDATA[
+		update tb_customer set password=#{password} where id=#{id}
+	]]>
+	</update>
+</mapper>

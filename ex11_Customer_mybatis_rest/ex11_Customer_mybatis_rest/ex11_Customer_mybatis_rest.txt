@@ -1,0 +1,42 @@
+1. ex10_Customer_mybatis을 복사해서 화면을 수정하시오
+2. 수정한후 Rest API로 바꾸시오
+=======================================================
+ex11_Customer_mybatis_rest  -- Spring Legacy Project
+                                                         패키지명: com.edu.customer
+ src/main/src
+   com.edu.customer
+      CustomerController.java
+      MainController.java
+   com.edu.customer.model.dao
+      CustomerDao.java
+   com.edu.customer.model.service
+      CustomerService.java
+   com.edu.customer.model
+      Customer.java
+src/main/resource      
+      mybatis-config.xml
+      user-mapping.xml
+      
+webapp
+   META-INF
+      context.xml
+   resource
+      customer.sql  
+      css
+         index.css
+      js
+          insert.js
+          list.js
+          search.js
+   WEB-INF
+       view
+          customer
+             insert.jsp
+             list.jsp
+             search.jsp
+          include
+             header.jsp
+          index.jsp          
+      
+     
+                                   

@@ -46,9 +46,8 @@ public class MainController {
 	}
 	
 	@GetMapping(value = "/idCheck")
-	@ResponseBody //원래있던(호출했던) 그자리로 가기
+	@ResponseBody
 	public String idCheck(@RequestParam("ckid") String checkid) throws Exception{
-		//해당하는 위치 비동기처리하려고 페이지가 없음
 		int idCount=service.idCheck(checkid);
 		JSONObject json = new JSONObject();
 		json.put("idcount", idCount);   // {idCount:1}

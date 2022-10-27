@@ -1,37 +1,32 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set var="root" value="${pageContext.request.contextPath }" />
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
 <title>Insert title here</title>
-</head>
-<body>
-	<h3 id="title">검색하려는 고객의 ID 를 입력해 주세요...</h3>
-	<hr>
-	ID
-	<input type="text" id="userid" name="id" >
-	<input type="submit" id="searchBtn" value="검색">
-	<p id = "userlist"/>
-	<script>
-	const searchBtn = document.querySelector("#searchBtn");
-	const userIdElem = document.querySelector("#userid");
-	const userListElem = document.querySelector("#userlist");
-	
-	searchBtn.addEventListener('click', (e)=>{
-		 let id = userIdElem.value;
-		 console.log(id);
-		 fetch('/user/customer/'+id)
-		 .then((response) => response.json())
-		 .then((user)=> {console.log(user); makeList(user)})
-		 .catch((e) => errorList())
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function () {
+	$("#searchBtn").click(function(){
+		var userid = $("#userid").val();
+		$.ajax({
+			url:'/user/customer/' + userid,  
+			type:'GET',
+			contentType:'application/json;charset=utf-8',
+			dataType:'json',
+			success:function(user) {
+				makeList(user);
+			},
+			error:function(xhr,status,msg){
+				console.log("상태값 : " + status + " Http에러메시지 : "+msg);
+				errorList();
+			}
 		});
-	
+	});
+
 	function makeList(user) {
-		//$("#userlist").empty(); //초기화 해주기
-		userListElem.innerHTML = '';
+		$("#userlist").empty();
 		let str = `
 			<table border='0'>
 				<tr>
@@ -41,18 +36,28 @@
 				</tr>
 			</table>
 		`;
-		//$("#userlist").html(str);
-		userListElem.innerHTML = str;
-		
+		$("#userlist").html(str);
 	}
-	
 	function errorList(){
 		let str = `찾는 데이터가 없습니다`;
-		userListElem.innerText = str;
+		$("#userlist").text(str);
 	}
-	
-	 
-
+});
 </script>
+</head>
+<body>
+	<h3>검색하려는 고객의 ID 를 입력해 주세요</h3>
+	<input type="text" name="id" id="userid">
+	<input type="button" id="searchBtn" value="검색"><br><br>
+	
+	<div id="userlist"></div>
 </body>
 </html>
+
+
+
+
+
+
+
+

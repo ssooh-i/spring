@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.board.model.dao.BoardDao">
+	<insert id="insert" parameterType="board">
+		<![CDATA[
+			INSERT INTO BOARD2(WRITER,TITLE,CONTENT,PWD,HIT,REGDATE)
+			VALUES(#{writer}, #{title}, #{content}, #{pwd}, #{hit} ,now())
+		]]>
+	</insert>
+	
+	<select id="list" resultType="board">
+		<![CDATA[
+			SELECT * FROM BOARD2
+		]]>
+	</select>
+	
+	<update id="updateHit" parameterType="int">
+		<![CDATA[
+			UPDATE BOARD2 
+			SET HIT = (SELECT temp.hit
+					   FROM   (SELECT hit
+					   		   FROM   board2
+					   		   WHERE  num = #{num}) as temp) + 1
+			WHERE NUM=#{num}
+		]]>
+	</update>
+	
+	<select id="board" resultType="board" parameterType="java.lang.Integer">
+		 <![CDATA[
+			 SELECT * 
+			 FROM BOARD2 
+			 WHERE NUM=#{num}
+		]]>
+	</select>
+	
+	<update id="update" parameterType="board">
+		<![CDATA[
+			UPDATE BOARD2
+			SET WRITER=#{writer}, TITLE=#{title}, CONTENT=#{content} 
+			where NUM=#{num}
+		]]>
+	</update>
+	
+	<delete id="delete" parameterType="java.lang.Integer">
+		<![CDATA[
+			DELETE 
+			FROM BOARD2
+			WHERE NUM=#{num}
+		]]>
+	</delete>
+</mapper>

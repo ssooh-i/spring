@@ -5,11 +5,11 @@ const makeList = (list)=>{
 	let html = `<table>
 				<thead>
 					<tr>
-						<td>아이디</td>
-						<td>비밀번호</td>
-						<td>이름</td>
-						<td>수정</td>
-						<td>삭제</td>
+						<td>번호</td>
+						<td>제목</td>
+						<td>작성자</td>
+						<td>날짜</td>
+						<td>조회</td>
 					</tr>
 				</thead>
 				<tbody></tbody>
@@ -34,20 +34,19 @@ const makeList = (list)=>{
 		
 		const delBtn = tr.querySelector(".delBtn");
 		const modBtn = tr.querySelector(".modBtn");
-		delBtn.addEventListener("click", delCustomer);
-		modBtn.addEventListener("click", modCustomer);
+		delBtn.addEventListener("click", del);
+		modBtn.addEventListener("click", mod);
 	})
 	
 }
 
-function delCustomer(event){
-	if(confirm("정말 삭제?")) {
+function del(event){
+	if(confirm("정말 삭제하시겠습니까?")) {
 		const parent = event.target.parentElement.parentElement;
-		const uid = parent.getAttribute("data-id");
-		const name = parent.getAttribute("data-name");
-		console.log(uid);
+		const writer = parent.getAttribute("writer");
+		console.log(writer);
 		
-		const url = `./user/customer/${uid}`;
+		const url = `./rest/board/${writer}`;
 		fetch(url, {
 			method : "delete",
 		})
@@ -57,17 +56,19 @@ function delCustomer(event){
 	}
 }
 
-function modCustomer(event){
+function mod(event){
 	const parent = event.target.parentElement.parentElement;
-	const uid = parent.getAttribute("data-id");
-	const pass = prompt("변경할 비밀번호를 입력하세요.");
+	const writer = parent.getAttribute("writer");	
+	const title = prompt("변경할 제목을 입력하세요.");
+	const content = prompt("변경할 내용을 입력하세요.");
 	
 	const modInfo = {
-	         "id" : uid, 
-	         "password" : pass
+	         "writer" : writer, 
+	         "title" : title,
+	         "content" : content
 	}
 	
-	const url = `./user/customer`;
+	const url = `./rest/board/${writer}`;
 	
 	fetch(url,{
 		body: JSON.stringify(modInfo),
@@ -81,7 +82,7 @@ function modCustomer(event){
 	.catch(()=> console.log("error"));
 }
 
-const url = '/user/customer';
+const url = '/rest/board';
 fetch(url)
 .then(res => res.json())
 .then(data => makeList(data))

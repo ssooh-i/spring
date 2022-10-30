@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.apache.org//DTD Mapper 3.0//EN" 
+"http://mybatis.apache.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- namespace는 dao명, id는 메서드명 -->
 <mapper namespace = "com.ssafy.board.model.dao.BoardDao">
 
 	<insert id = "insert" parameterType="boardDto">
 		<![CDATA[
-			insert into board2(writer, title, content, pwd, hit) values(#{writer}, #{title}, #{content}, #{pwd}, #{hit})
+			insert into board2(writer, title, content, pwd, hit, regdate) values(#{writer}, #{title}, #{content}, #{pwd}, #{hit}, #{regdate})
 		]]>
 	</insert>
 	

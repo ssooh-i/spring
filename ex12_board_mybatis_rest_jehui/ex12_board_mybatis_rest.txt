@@ -1,0 +1,139 @@
+ex12_board_mybatis_rest  -- Spring Legacy Project  --> Spring MVC Project
+                                                        패키지명: com.ssafy.board
+--------------------------------------------------------------------------
+(1) pom.xml
+	<properties>
+		<java-version>1.8</java-version>
+		<org.springframework-version>5.3.23</org.springframework-version>
+		<mysql-connector-java-version>8.0.24</mysql-connector-java-version>
+		<mybatis-version>3.5.6</mybatis-version>
+		<mybatis-spring-version>2.0.6</mybatis-spring-version>
+		<commons-dbcp-version>1.4</commons-dbcp-version>
+		<jackson-databind-version>2.12.3</jackson-databind-version>
+		<json-version>20210307</json-version>
+		<org.aspectj-version>1.6.10</org.aspectj-version>
+		<org.slf4j-version>1.6.6</org.slf4j-version>
+	</properties>
+	
+	<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+	<dependency>
+		<groupId>mysql</groupId>
+		<artifactId>mysql-connector-java</artifactId>
+		<version>${mysql-connector-java-version}</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+	<dependency>
+		<groupId>org.mybatis</groupId>
+		<artifactId>mybatis</artifactId>
+		<version>${mybatis-version}</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
+	<dependency>
+		<groupId>org.mybatis</groupId>
+		<artifactId>mybatis-spring</artifactId>
+		<version>${mybatis-spring-version}</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/commons-dbcp/commons-dbcp -->
+	<dependency>
+		<groupId>commons-dbcp</groupId>
+		<artifactId>commons-dbcp</artifactId>
+		<version>${commons-dbcp-version}</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/org.springframework/spring-tx -->
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-tx</artifactId>
+		<version>${org.springframework-version}</version>
+	</dependency>
+
+	<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-jdbc</artifactId>
+		<version>${org.springframework-version}</version>
+	</dependency>
+	     
+	<!-- https://mvnrepository.com/artifact/org.json/json -->
+	<dependency>
+	    <groupId>org.json</groupId>
+	    <artifactId>json</artifactId>
+	    <version>${json-version}</version>
+	</dependency>
+		
+	<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+	<dependency>
+		<groupId>com.fasterxml.jackson.core</groupId>
+		<artifactId>jackson-databind</artifactId>
+		<version>${jackson-databind-version}</version>
+	</dependency>
+		
+(2) web.xml -- 한글처리		
+------------------------------------------------------------------------------------		
+src/main/java
+    com.ssafy.board
+        MainController.java
+        BoardRestController.java
+    com.ssafy.board.model
+    	Board.java
+    com.ssafy.board.model.dao
+    	BoardDao.java   -- interface
+    com.ssafy.board.model.service
+        BoardService.java
+        
+src/main/resource
+     mybatis-config.xml
+     board-mapping.xml
+     
+src
+  main
+     webapp
+        resource
+        table_schema
+            board.txt
+        META-INF            -- 폴더
+            context.xml     -- 파일
+        WEB-INF
+            classes
+            spring
+                appServlet
+                    servlet-context.xml  
+                root-context.xml 
+            views
+               insert.jsp
+               list.jsp
+               read.jsp
+               update.jsp
+               index.jsp
+            web.xml
+------------------------------------------------------------------------------------
+[CSS 분리]		    
+src
+  main
+     webapp
+        resource
+           css              --추가
+             style.css      --jsp 파일에서 스타일을 뽑아서 파일생성   
+        table_schema
+            board.txt
+        META-INF            -- 폴더
+            context.xml     -- 파일
+        WEB-INF
+            classes
+            spring
+                appServlet
+                    servlet-context.xml  
+                root-context.xml 
+            views
+               article
+                  insert.jsp
+                  list.jsp
+                  read.jsp
+                  update.jsp
+               index.jsp
+            web.xml            
+
+            

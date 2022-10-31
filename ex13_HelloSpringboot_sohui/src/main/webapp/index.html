@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div align = "center">
+	하이하이 마니또 벌써 들켜버린 김소희,,,,
+	<br>
+	<a href="/ssafy/test1"><button id = "btn1" > Hello,SpringBoot </button></a>
+	<br>
+	<input type="button" id="restBtn" value="REST call">
+	<div id="res"></div>
+</div>
+<script>
+document.getElementById('restBtn').addEventListener('click', (e) => {
+	fetch('test2').then(res => res.json())
+	.then(res => {
+		if(res.msg) {
+			document.getElementById('res').innerText = res.msg;
+		}
+	})
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+﻿ex13_HelloSpringBoot	      --> Spring Starter Project
+
+type: Maven
+Packaging: Jar
+Java Version: 8 
+Language: Java
+
+Group: com.ssafy
+Description: Simple project for Spring Boot
+Package: com.ssafy.hello                              
+
+Available :Spring Boot DevTools, Web -> Spring Web(체크)
+
+[실행 1]
+1.프로젝트에서 오른쪽 버튼 -> Run As -> Spring Boot App
+2.크롬 브라우저를 띄우고 -> http://localhost:8080  (application.properties에 아무것도 작성 안함)
+------------------------------------------------------------------------
+src/main/resource
+     banner  --폴더
+        banner.txt
+        spring-boot-logo.png
+     static                 --HTML같은 정적인 웹리소스를 저장 
+     templates              --타임리프와 같은 템플릿 기반의 웹리소스를 저장
+     application.properties --프로젝트 전체에서 사용할 프로퍼티 정보들을 저장
+
+
+pom.xml
+ spring-boot-starter-web  -- 웹 어플리케이션 개발에 필요한 스프린 MVC관련 라이브러리
+ spring-boot-starter-test -- JUnit을 비롯한 테스트 관련 라이브러리
+
+[실행 2 - banner를 추가하고 실행]
+1. 프로젝트에서 오른쪽 버튼 -> Run As -> Spring Boot App -> 콘솔창에 banner가 바뀐것을 확인 (application.properties에서 베너추가)
+-------------------------------------------------------------------------
+src
+  main
+    webapp <-- 폴더
+       index.html
+             
+[실행 3] 
+1.프로젝트에서 오른쪽 버튼 -> Run As -> Spring Boot App
+2.크롬 브라우저를 띄우고 -> http://localhost:8000     (application.properties에서 포트8000추가)
+-------------------------------------------------------------------------
+src/main/java
+   com.ssafy.hello.controller  <-- 추가
+      HelloController.java
+      
+src/main/resource
+     banner  --폴더
+        banner.txt
+        spring-boot-logo.png
+     static                 
+     templates              
+     application.properties --수정
+src
+  main
+    webapp <-- 폴더
+       WEB-INF  <-- 폴더
+          views   <-- 폴더
+             hello.jsp <-- 추가
+             
+pom.xml <-- jsp, tomcat.embed 추가             
+             
+[실행 4] 
+1.프로젝트에서 오른쪽 버튼 -> Run As -> Spring Boot App
+2.크롬 브라우저를 띄우고 -> http://localhost:8000/ssafy (또는 http://localhost/ssafy)
+(application.properties에서 포트8000추가, prefix,suffix 추가)

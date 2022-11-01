@@ -33,6 +33,7 @@ public class MainController {
 	
 	@GetMapping("/insert")
 	public String insert() {
+		logger.info("insert controller Run");
 		return "board/insert";
 	}
 	

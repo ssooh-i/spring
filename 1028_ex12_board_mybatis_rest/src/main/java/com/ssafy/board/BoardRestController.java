@@ -52,6 +52,8 @@ public class BoardRestController {
 	//search
 		@GetMapping(value = "/board/{writer}") 
 		public ResponseEntity<?> Search(@PathVariable("writer") String writer) throws Exception {
+			
+			
 			try {
 				return new ResponseEntity<BoardDto>(boardService.Search(writer), HttpStatus.OK);
 			}catch(Exception e) {

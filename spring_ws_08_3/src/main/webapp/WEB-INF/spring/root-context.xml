@@ -21,9 +21,9 @@
 		<property name="driverClassName"
 			value="com.mysql.cj.jdbc.Driver"></property>
 		<property name="url"
-			value="jdbc:mysql://localhost:3306/ssafy_ws?serverTimezone=UTC"></property>
+			value="jdbc:mysql://localhost:3306/ssafyweb?serverTimezone=UTC"></property>
 		<property name="username" value="ssafy"></property>
-		<property name="password" value="1234"></property>
+		<property name="password" value="ssafy"></property>
 	</bean>
 
 	<!-- Transaction 처리를 위한 transactionManager를 등록한다. 아이디는 언제나 고정한다. -->

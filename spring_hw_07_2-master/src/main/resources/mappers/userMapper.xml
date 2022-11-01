@@ -27,6 +27,15 @@
 
 	<!-- 모든 사용자 정보를 검색한다. id는 Dao클래스의 메소드 이름과 일치시킨다. -->
 	<select id="searchByName" resultType="user">
+		SELECT * FROM users WHERE name LIKE
+		CONCAT('%',#{name},'%')
+		
+	</select>
+	
+	<select id="searchByCondition" parameterType="SearchCondition" resultType="User">
 		SELECT * FROM users
+		<if test = "key != 'none'">
+		where ${key} LIKE CONCAT('%',#{word},'%')
+		</if>
 	</select>
 </mapper>

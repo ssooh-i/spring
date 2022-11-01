@@ -1,6 +1,15 @@
 ex12_board_mybatis_rest  -- Spring Legacy Project  --> Spring MVC Project
                                                         패키지명: com.ssafy.board
 --------------------------------------------------------------------------
+(0) pom.xml lombok 추가 
+<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+<dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <version>1.18.24</version>
+    <scope>provided</scope>
+</dependency>
+
 (1) pom.xml
 	<properties>
 		<java-version>1.8</java-version>

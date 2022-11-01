@@ -2,6 +2,7 @@ package com.ssafy.hw.model.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.ConstructorArgs;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,7 +16,7 @@ public class UserServiceImpl implements UserService {
 
 	private UserDao userDao;
 
-	@Autowired
+	@ConstructorArgs
 	public void setUserRepo(UserDao userDao) {
 		this.userDao = userDao;
 	}

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.board.model.dao.BoardDao">
+	<insert id="insertBoard" parameterType="board">
+		insert into board2 (writer, title, content, pwd, hit, regdate)
+		values (#{writer}, #{title}, #{content}, #{pwd}, #{hit}, #{regdate})
+	</insert>
+	
+	<select id="listBoard" resultType="board">
+		select * from board2
+	</select>
+	
+	<select id="selectOne" resultType="board" parameterType="java.lang.Integer">
+		select * from board2 where num=#{num}
+	</select>
+	
+	<update id="updateBoardHit" parameterType="java.lang.Integer">
+		update board2 set hit=hit+1 where num=#{num}
+	</update>
+	
+	<delete id="deleteBoard" parameterType="java.lang.Integer">
+		delete from board2 where num=#{num}
+	</delete>
+	
+	<update id="updateBoard" parameterType="board">
+		update board2 set writer=#{writer}, title=#{title}, content=#{content}
+		where num=#{num}
+	</update>
+	
+	<select id="passwordCheck" parameterType="board" resultType="board">
+		select * from board2 where num=#{num} and pwd=#{pwd}
+	</select>
+</mapper>

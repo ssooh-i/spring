@@ -1,0 +1,27 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+table { width: 46em; padding-top: 0.3em; }
+th { background: #D6D6D6; }
+td { 
+	border: 1px dotted; 
+	padding : 10px;	
+}
+
+tr:hover {
+    background-color: #E6E6E6;
+}
+
+tr:hover td {
+    background-color: transparent; /* or #000 */
+}
+
+.hidden {
+	display : none;
+}
+
+.warning{
+	color : red;
+}

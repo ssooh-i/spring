@@ -17,7 +17,8 @@
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
 		up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
-
+	
+	<!-- 스웨거 등록하기 -->
 	<beans:bean id="swagger2Config"
 		class="com.ssafy.ws.config.SwaggerConfig"></beans:bean>
 		
